@@ -25,12 +25,12 @@
                     <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* P0.10 */
                     <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* P0.09 */
                     
-        col-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>,  /* P0.22 */
-                    <&gpio0 24 GPIO_ACTIVE_HIGH>,  /* P0.24 */
-                    <&gpio1 0  GPIO_ACTIVE_HIGH>,  /* P1.00 */
-                    <&gpio0 11 GPIO_ACTIVE_HIGH>,  /* P0.11 */
+        col-gpios = <&gpio1 6  GPIO_ACTIVE_HIGH>,  /* P1.06 */
                     <&gpio1 4  GPIO_ACTIVE_HIGH>,  /* P1.04 */
-                    <&gpio1 6  GPIO_ACTIVE_HIGH>;  /* P1.06 */
+                    <&gpio0 11 GPIO_ACTIVE_HIGH>,  /* P0.11 */
+                    <&gpio1 0  GPIO_ACTIVE_HIGH>,  /* P1.00 */
+                    <&gpio0 24 GPIO_ACTIVE_HIGH>,  /* P0.24 */
+                    <&gpio0 22 GPIO_ACTIVE_HIGH>;  /* P0.22 */
                     
         diode-direction = "col2row";
         debounce-press-ms = <5>;
