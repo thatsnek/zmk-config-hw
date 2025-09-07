@@ -5,14 +5,11 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <layouts/foostan/corne/6column.dtsi>
-#include <layouts/foostan/corne/5column.dtsi>
 
 / {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,physical-layout = &foostan_corne_6col_layout;
         zephyr,display = &oled;
     };
 
@@ -28,6 +25,11 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9)
         >;
     };
 
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        wakeup-source;
+        diode-direction = "col2row";
+    };
 };
 
 &pinctrl {
@@ -71,12 +73,4 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9)
         com-sequential;
         prechargep = <0x22>;
     };
-};
-
-&foostan_corne_6col_layout {
-    transform = <&default_transform>;
-};
-
-&foostan_corne_5col_layout {
-    transform = <&default_transform>;
 };
