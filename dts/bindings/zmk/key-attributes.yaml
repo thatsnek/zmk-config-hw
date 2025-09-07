@@ -2,7 +2,9 @@ title: ZMK Key Attributes
 description: Provider of physical key attribute specifiers
 compatible: "zmk,key-attributes"
 
-#key-cells:
+"#key-cells": 7
+
+key-cell-names:
   - width
   - height
   - x
