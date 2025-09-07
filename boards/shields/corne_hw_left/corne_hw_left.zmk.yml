@@ -1,0 +1,13 @@
+file_format: "1"
+id: corne_hw_left
+name: Corne HW Left
+type: shield
+url: https://github.com/foostan/crkbd
+requires: [nice_nano_v2]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+  - sleep
+siblings:
+  - corne_hw_right
