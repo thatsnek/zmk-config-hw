@@ -44,6 +44,7 @@
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
                     <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            bias-pull-up;
         };
     };
 
@@ -51,6 +52,7 @@
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
                     <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            bias-pull-up;
             low-power-enable;
         };
     };
@@ -71,6 +73,12 @@
         height = <32>;
         segment-offset = <0>;
         page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-remap;
+        com-invdir;
+        com-sequential;
+        prechargep = <0x22>;
         label = "OLED";
     };
 };
