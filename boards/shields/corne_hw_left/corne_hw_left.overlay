@@ -75,6 +75,5 @@
         com-invdir;
         com-sequential;
         prechargep = <0x22>;
-        label = "OLED";
     };
 };
