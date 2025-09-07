@@ -52,5 +52,19 @@
                              &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;
                 };
+
+                studio_layer {
+// -----------------------------------------------------------------------------------------
+// |      |     |     |     |     |     |   |     |     |     |     |     |      |
+// |      |     |     |     |     |     |   |     |     |     |     |     |      |
+// |      |     |     |     |     |UNLCK|   |     |     |     |     |     |      |
+//                    |     |     |     |   |     |     |     |
+                        bindings = <
+   &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+   &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+   &trans &trans &trans &trans &trans &studio_unlock &trans &trans &trans &trans &trans &trans
+                        &trans &trans &trans      &trans &trans &trans
+                        >;
+                };
         };
 };
