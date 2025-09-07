@@ -3,13 +3,4 @@ compatible: "zmk,key-attributes"
 
 "#key-cells": 7
 
-key-cell-names:
-  - width
-  - height
-  - x
-  - y
-  - rotation
-  - rotation_x
-  - rotation_y
-
 
