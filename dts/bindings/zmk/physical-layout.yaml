@@ -1,5 +1,4 @@
-title: ZMK Physical Layout
-description: Describes the keyboard's physical layout and key positions
+description: ZMK Physical Layout - Describes the keyboard's physical layout and key positions
 compatible: "zmk,physical-layout"
 
 properties:
