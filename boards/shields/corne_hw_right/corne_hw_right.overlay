@@ -6,6 +6,10 @@
 
 #include "corne_hw.dtsi"
 
+&chosen {
+    zmk,matrix_transform = &default_transform;
+};
+
 &default_transform {
     col-offset = <6>;
 };
@@ -15,21 +19,21 @@
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         
-        // Right half pin mapping (handwired):
-        // rows: r0=P0.29, r1=P1.13, r2=P0.10, r3=P0.09
-        // cols: c0=P1.06, c1=P1.04, c2=P0.11, c3=P1.00, c4=P0.24, c5=P0.22
+        // Right half pin mapping (handwired) - Nice Nano pins:
+        // rows: r0=D14(P1.11), r1=D15(P1.13), r2=D16(P0.10), r3=D10(P0.09)
+        // cols: c0=D9(P1.06), c1=D8(P1.04), c2=D7(P0.11), c3=D6(P1.00), c4=D5(P0.24), c5=D4(P0.22)
         
-        row-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* P0.29 */
-                    <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* P1.13 */
-                    <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* P0.10 */
-                    <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* P0.09 */
+        row-gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* D14 = P1.11 */
+                    <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* D15 = P1.13 */
+                    <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* D16 = P0.10 */
+                    <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* D10 = P0.09 */
                     
-        col-gpios = <&gpio1 6  GPIO_ACTIVE_HIGH>,  /* P1.06 */
-                    <&gpio1 4  GPIO_ACTIVE_HIGH>,  /* P1.04 */
-                    <&gpio0 11 GPIO_ACTIVE_HIGH>,  /* P0.11 */
-                    <&gpio1 0  GPIO_ACTIVE_HIGH>,  /* P1.00 */
-                    <&gpio0 24 GPIO_ACTIVE_HIGH>,  /* P0.24 */
-                    <&gpio0 22 GPIO_ACTIVE_HIGH>;  /* P0.22 */
+        col-gpios = <&gpio1 6  GPIO_ACTIVE_HIGH>,  /* D9 = P1.06 */
+                    <&gpio1 4  GPIO_ACTIVE_HIGH>,  /* D8 = P1.04 */
+                    <&gpio0 11 GPIO_ACTIVE_HIGH>,  /* D7 = P0.11 */
+                    <&gpio1 0  GPIO_ACTIVE_HIGH>,  /* D6 = P1.00 */
+                    <&gpio0 24 GPIO_ACTIVE_HIGH>,  /* D5 = P0.24 */
+                    <&gpio0 22 GPIO_ACTIVE_HIGH>;  /* D4 = P0.22 */
                     
         diode-direction = "col2row";
         debounce-press-ms = <5>;
