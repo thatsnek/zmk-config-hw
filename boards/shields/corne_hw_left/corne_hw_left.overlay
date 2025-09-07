@@ -13,13 +13,13 @@
         label = "KSCAN_LEFT";
         
         // Left half pin mapping (handwired):
-        // rows: r0=P1.00, r1=P0.11, r2=P1.04, r3=P0.09
+        // rows: r0=P1.00, r1=P0.11, r2=P1.04, r3=P1.06
         // cols: c0=P0.02, c1=P1.15, c2=P1.13, c3=P1.11, c4=P0.10, c5=P0.09
         
         row-gpios = <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* P1.00 */
                     <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* P0.11 */
                     <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* P1.04 */
-                    <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* P0.09 */
+                    <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* P1.06 */
                     
         col-gpios = <&gpio0 2  GPIO_ACTIVE_HIGH>,  /* P0.02 */
                     <&gpio1 15 GPIO_ACTIVE_HIGH>,  /* P1.15 */
