@@ -1,0 +1,16 @@
+title: ZMK Physical Layout
+description: Describes the keyboard's physical layout and key positions
+compatible: "zmk,physical-layout"
+
+properties:
+  display-name:
+    type: string
+    required: false
+  transform:
+    type: phandle
+    required: true
+  keys:
+    type: phandle-array
+    required: true
+
+
