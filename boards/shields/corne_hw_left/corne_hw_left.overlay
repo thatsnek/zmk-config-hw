@@ -10,7 +10,6 @@
 
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN_LEFT";
         
         // Left half pin mapping (handwired):
         // rows: r0=P1.00, r1=P0.11, r2=P1.04, r3=P1.06
