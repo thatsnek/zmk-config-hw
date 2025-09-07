@@ -16,7 +16,7 @@
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN_RIGHT";
         
-        // Right half pin mapping:
+        // Right half pin mapping (handwired):
         // rows: r0=P0.29, r1=P1.13, r2=P0.10, r3=P0.09
         // cols: c0=P1.06, c1=P1.04, c2=P0.11, c3=P1.00, c4=P0.24, c5=P0.22
         
