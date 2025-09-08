@@ -40,21 +40,44 @@
 // Pins: SDA=P0.17, SCL=P0.20 (board defaults)
 &i2c0 {
     status = "okay";
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
+    pinctrl-names = "default", "sleep";
+
     oled0: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
-        reg = <0x3d>;            // most 128x32 boards use 0x3C
+        status = "okay";
+        reg = <0x3c>;        // matching node name @3c
         width = <128>;
         height = <32>;
+        multiplex-ratio = <31>;
         segment-offset = <0>;
         page-offset = <0>;
         display-offset = <0>;
-        multiplex-ratio = <31>;  // 32px high -> 31
         prechargep = <0x22>;
         com-sequential;
-        // orientation tweaks if needed:
-        // segment-remap;     // flips left-right
-        // com-invdir;        // flips top-bottom
-        // inversion-on;      // white-on-black
+        // segment-remap;  // if mirrored
+        // com-invdir;    // if upside down
+    };
+};
+
+// Add pinctrl configuration for I2C
+&pinctrl {
+    i2c0_default: i2c0_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            bias-pull-up;
+        };
+    };
+
+    i2c0_sleep: i2c0_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
+            bias-pull-up;
+            low-power-enable;
+        };
     };
 };
 
