@@ -10,7 +10,7 @@
 
 / {
     chosen {
-        zephyr,display = &oled;
+        zephyr,display = &oled0;
     };
 };
 
@@ -28,24 +28,25 @@
                 <&gpio0 9  GPIO_ACTIVE_HIGH>;  /* Col 5 = P0.09 */
 };
 
-// Back to original working pins from numpad
-// Your confirmed working pins: SDA=P0.17, SCL=P0.20
-&pinctrl {
-    i2c0_default: i2c0_default {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,  /* SDA = P0.17 */
-                    <NRF_PSEL(TWIM_SCL, 0, 20)>;  /* SCL = P0.20 */
-            bias-pull-up;  /* Enable internal pull-up resistors */
-        };
-    };
-
-    i2c0_sleep: i2c0_sleep {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,  /* SDA = P0.17 */
-                    <NRF_PSEL(TWIM_SCL, 0, 20)>;  /* SCL = P0.20 */
-            bias-pull-up;
-            low-power-enable;
-        };
+// OLED configuration - using standard i2c0 on Nice Nano
+// Pins: SDA=P0.17, SCL=P0.20 (board defaults)
+&i2c0 {
+    status = "okay";
+    oled0: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;            // most 128x32 boards use 0x3C
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;  // 32px high -> 31
+        prechargep = <0x22>;
+        com-sequential;
+        // orientation tweaks if needed:
+        // segment-remap;     // flips left-right
+        // com-invdir;        // flips top-bottom
+        // inversion-on;      // white-on-black
     };
 };
 

@@ -30,6 +30,31 @@
                 <&gpio0 22 GPIO_ACTIVE_HIGH>;  /* Col 5 = P0.22 */
 };
 
-// Right side is peripheral - no I2C/OLED configuration needed
-// OLED control is handled by central (left) side only
+/ {
+    chosen {
+        zephyr,display = &oled0;
+    };
+};
+
+// OLED configuration - using standard i2c0 on Nice Nano
+// Pins: SDA=P0.17, SCL=P0.20 (board defaults)
+&i2c0 {
+    status = "okay";
+    oled0: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;            // most 128x32 boards use 0x3C
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;  // 32px high -> 31
+        prechargep = <0x22>;
+        com-sequential;
+        // orientation tweaks if needed:
+        // segment-remap;     // flips left-right
+        // com-invdir;        // flips top-bottom
+        // inversion-on;      // white-on-black
+    };
+};
 
