@@ -39,23 +39,20 @@
 // OLED configuration - using standard i2c0 on Nice Nano
 // Pins: SDA=P0.17, SCL=P0.20 (board defaults)
 &i2c0 {
+    compatible = "nordic,nrf-twim";  // Force TWIM driver
     status = "okay";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
 
-    oled0: ssd1306@3d {
-        compatible = "solomon,ssd1306fb";
+    oled0: sh1106@3c {
+        compatible = "sinowealth,sh1106";
         status = "okay";
-        reg = <0x3d>;        // trying different address
+        reg = <0x3c>;
         width = <128>;
-        height = <32>;
-        multiplex-ratio = <31>;
-        segment-offset = <0>;
+        height = <64>;      /* SH1106 is 132x64 internally */
         page-offset = <0>;
         display-offset = <0>;
-        prechargep = <0x22>;
-        com-sequential;
         // segment-remap;  // if mirrored
         // com-invdir;    // if upside down
     };
