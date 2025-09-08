@@ -8,6 +8,12 @@
 #include <dt-bindings/i2c/i2c.h>
 #include "corne_hw.dtsi"
 
+/ {
+    chosen {
+        zephyr,display = &oled;
+    };
+};
+
 &kscan0 {
     row-gpios = <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* D6 = P1.00 */
                 <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* D7 = P0.11 */
