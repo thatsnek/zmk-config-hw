@@ -10,12 +10,11 @@
     col-offset = <6>;
 };
 
-/ {
-    chosen {
-        zmk,matrix_transform = &default_transform;
-    };
+&five_column_transform {
+    col-offset = <6>;
+};
 
-    kscan0: kscan {
+&kscan0 {
         compatible = "zmk,kscan-gpio-matrix";
         
         // Right half pin mapping (handwired) - Nice Nano pins:
@@ -38,6 +37,5 @@
         debounce-press-ms = <5>;
         debounce-release-ms = <5>;
         wakeup-source;
-    };
 };
 
