@@ -22,18 +22,19 @@
 };
 
 // Override I2C pinctrl for custom OLED wiring
+// User wiring: SDA=017, SCL=020 -> SDA=P0.20, SCL=P0.17
 &pinctrl {
     i2c0_default: i2c0_default {
         group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,  /* SDA = P0.17 */
-                    <NRF_PSEL(TWIM_SCL, 0, 20)>;  /* SCL = P0.20 */
+            psels = <NRF_PSEL(TWIM_SDA, 0, 20)>,  /* SDA = P0.20 */
+                    <NRF_PSEL(TWIM_SCL, 0, 17)>;  /* SCL = P0.17 */
         };
     };
 
     i2c0_sleep: i2c0_sleep {
         group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,  /* SDA = P0.17 */
-                    <NRF_PSEL(TWIM_SCL, 0, 20)>;  /* SCL = P0.20 */
+            psels = <NRF_PSEL(TWIM_SDA, 0, 20)>,  /* SDA = P0.20 */
+                    <NRF_PSEL(TWIM_SCL, 0, 17)>;  /* SCL = P0.17 */
             low-power-enable;
         };
     };
