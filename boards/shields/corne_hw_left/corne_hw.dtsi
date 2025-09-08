@@ -70,9 +70,27 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
     pinctrl-0 = <&i2c0_default>;
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
-    clock-frequency = <I2C_BITRATE_STANDARD>;
+    clock-frequency = <I2C_BITRATE_FAST>;  // Try faster speed - some displays prefer this
     status = "okay";
     
+    // Try alternative I2C address first
+    oled: ssd1306@3d {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3d>;
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;        // height-1 (32-1=31)
+        segment-remap;                 // Horizontal flip
+        com-invdir;                    // Vertical flip  
+        com-sequential;                // COM pins sequential
+        prechargep = <0x22>;          // Precharge period
+    };
+    
+    // Original I2C address - comment back in if 0x3d doesn't work
+    /*
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
@@ -86,23 +104,6 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
         com-invdir;                    // Vertical flip  
         com-sequential;                // COM pins sequential
         prechargep = <0x22>;          // Precharge period
-    };
-    
-    // Alternative I2C address in case 0x3c doesn't work
-    /*
-    oled: ssd1306@3d {
-        compatible = "solomon,ssd1306fb";
-        reg = <0x3d>;
-        width = <128>;
-        height = <32>;
-        segment-offset = <0>;
-        page-offset = <0>;
-        display-offset = <0>;
-        multiplex-ratio = <31>;
-        segment-remap;
-        com-invdir;
-        com-sequential;
-        prechargep = <0x22>;
     };
     */
 };
