@@ -9,5 +9,6 @@ features:
   - keys
   - display
   - sleep
+  - studio
 siblings:
   - corne_hw_right
