@@ -34,7 +34,7 @@
     status = "okay";
     oled0: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;            // most 128x32 boards use 0x3C
+        reg = <0x3d>;            // most 128x32 boards use 0x3C
         width = <128>;
         height = <32>;
         segment-offset = <0>;
