@@ -15,27 +15,16 @@
 };
 
 &kscan0 {
-        compatible = "zmk,kscan-gpio-matrix";
-        
-        // Right half pin mapping (handwired) - Nice Nano pins:
-        // rows: r0=D14(P1.11), r1=D15(P1.13), r2=D16(P0.10), r3=D10(P0.09)
-        // cols: c0=D9(P1.06), c1=D8(P1.04), c2=D7(P0.11), c3=D6(P1.00), c4=D5(P0.24), c5=D4(P0.22)
-        
-        row-gpios = <&gpio1 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* D14 = P1.11 */
-                    <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* D15 = P1.13 */
-                    <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* D16 = P0.10 */
-                    <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* D10 = P0.09 */
-                    
-        col-gpios = <&gpio1 6  GPIO_ACTIVE_HIGH>,  /* D9 = P1.06 */
-                    <&gpio1 4  GPIO_ACTIVE_HIGH>,  /* D8 = P1.04 */
-                    <&gpio0 11 GPIO_ACTIVE_HIGH>,  /* D7 = P0.11 */
-                    <&gpio1 0  GPIO_ACTIVE_HIGH>,  /* D6 = P1.00 */
-                    <&gpio0 24 GPIO_ACTIVE_HIGH>,  /* D5 = P0.24 */
-                    <&gpio0 22 GPIO_ACTIVE_HIGH>;  /* D4 = P0.22 */
-                    
-        diode-direction = "col2row";
-        debounce-press-ms = <5>;
-        debounce-release-ms = <5>;
-        wakeup-source;
+    row-gpios = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* Row 0 = P0.29 */
+                <&gpio1 13 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* Row 1 = P1.13 */
+                <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>,  /* Row 2 = P0.10 */
+                <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;  /* Row 3 = P0.09 */
+
+    col-gpios = <&gpio1 6  GPIO_ACTIVE_HIGH>,  /* Col 0 = P1.06 */
+                <&gpio1 4  GPIO_ACTIVE_HIGH>,  /* Col 1 = P1.04 */
+                <&gpio0 11 GPIO_ACTIVE_HIGH>,  /* Col 2 = P0.11 */
+                <&gpio1 0  GPIO_ACTIVE_HIGH>,  /* Col 3 = P1.00 */
+                <&gpio0 24 GPIO_ACTIVE_HIGH>,  /* Col 4 = P0.24 */
+                <&gpio0 22 GPIO_ACTIVE_HIGH>;  /* Col 5 = P0.22 */
 };
 
