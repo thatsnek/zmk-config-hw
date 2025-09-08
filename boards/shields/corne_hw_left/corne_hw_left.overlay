@@ -28,14 +28,9 @@
                 <&gpio0 9  GPIO_ACTIVE_HIGH>;  /* Col 5 = P0.09 */
 };
 
-// OLED configuration - using standard i2c0 on Nice Nano
+// OLED configuration - using pro_micro_i2c on Nice Nano
 // Pins: SDA=P0.17, SCL=P0.20 (board defaults)
-&i2c0 {
-    compatible = "nordic,nrf-twi";
-    pinctrl-0 = <&i2c0_default>;
-    pinctrl-1 = <&i2c0_sleep>;
-    pinctrl-names = "default", "sleep";
-    clock-frequency = <I2C_BITRATE_STANDARD>;
+&pro_micro_i2c {
     status = "okay";
 
     oled0: ssd1306@3c {
@@ -54,23 +49,5 @@
     };
 };
 
-// Add pinctrl configuration for I2C
-&pinctrl {
-    i2c0_default: i2c0_default {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
-                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
-            bias-pull-up;
-        };
-    };
-
-    i2c0_sleep: i2c0_sleep {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>,
-                    <NRF_PSEL(TWIM_SCL, 0, 20)>;
-            bias-pull-up;
-            low-power-enable;
-        };
-    };
-};
+// pinctrl configuration is handled by the board (Nice Nano)
 
