@@ -3,7 +3,7 @@ id: corne_hw_right
 name: Corne HW Right
 type: shield
 url: https://github.com/foostan/crkbd
-requires: [nice_nano_v2]
+requires: [pro_micro]
 exposes: [i2c_oled]
 features:
   - keys
